@@ -3,23 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Brief</title>
+<title>The Brief — Victoria Chazal</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap');
-  
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
   :root {
-    --bg: #0a0a0a;
-    --surface: #111;
-    --card: #161616;
-    --border: #242424;
-    --accent: #c8a97e;
-    --accent2: #e8d5b5;
-    --text: #f0ece4;
-    --muted: #777;
-    --green: #7ecf7e;
-    --purple: #c07ed0;
-    --blue: #7e9ed0;
-    --red: #d07e7e;
+    --bg: #080808;
+    --surface: #0f0f0f;
+    --card: #121212;
+    --border: #1e1e1e;
+    --border2: #2a2a2a;
+    --accent: #b8955a;
+    --accent-light: #d4b483;
+    --text: #ede8e0;
+    --muted: #666;
+    --muted2: #444;
+    --green: #6ab87a;
+    --purple: #b87abf;
+    --blue: #7a9fbf;
+    --rose: #bf7a7a;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -28,330 +30,441 @@
     background: var(--bg);
     color: var(--text);
     font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
     min-height: 100vh;
   }
 
-  /* HEADER */
-  header {
-    padding: 32px 44px 28px;
+  .topbar {
+    padding: 18px 48px;
     border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
   }
 
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-
-  .logo span { color: var(--accent); }
-
-  .tagline {
-    font-size: 0.7rem;
-    letter-spacing: 0.12em;
+  .topbar-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--muted);
-    margin-top: 7px;
   }
 
-  .header-meta {
-    text-align: right;
-    font-size: 0.75rem;
+  .topbar-links { display: flex; gap: 24px; }
+
+  .topbar-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--muted);
-    line-height: 1.8;
+    text-decoration: none;
+    transition: color 0.2s;
   }
 
-  .header-meta strong {
-    display: block;
-    color: var(--accent);
-    font-size: 0.82rem;
-    font-weight: 500;
-  }
+  .topbar-links a:hover { color: var(--accent); }
 
-  /* TOOLBAR */
-  .toolbar {
-    padding: 18px 44px;
+  .hero {
+    padding: 64px 48px 48px;
     border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    align-items: end;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent-light);
+  }
+
+  .hero-sub {
+    margin-top: 20px;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 20px;
     flex-wrap: wrap;
   }
 
-  .btn-primary {
-    background: var(--accent);
-    color: #0a0a0a;
-    border: none;
-    padding: 9px 22px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s;
+  .hero-sub span { color: var(--muted2); }
+
+  .hero-meta {
+    text-align: right;
+    font-size: 0.72rem;
+    color: var(--muted);
+    line-height: 2;
+    padding-bottom: 4px;
   }
 
-  .btn-primary:hover:not(:disabled) { background: var(--accent2); }
-  .btn-primary:disabled { opacity: 0.45; cursor: not-allowed; }
+  .hero-meta strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--accent-light);
+    margin-bottom: 2px;
+  }
 
-  .divider { width: 1px; height: 24px; background: var(--border); margin: 0 4px; }
+  .toolbar {
+    padding: 20px 48px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-run {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 9px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-run:hover:not(:disabled) { background: var(--accent); color: #080808; }
+  .btn-run:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  .sep { width: 1px; height: 20px; background: var(--border2); }
 
   .filters { display: flex; gap: 6px; flex-wrap: wrap; }
 
   .filter {
     background: transparent;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border2);
     color: var(--muted);
-    padding: 6px 14px;
+    padding: 7px 16px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 300;
+    letter-spacing: 0.06em;
     cursor: pointer;
-    transition: all 0.15s;
-    letter-spacing: 0.03em;
+    transition: all 0.2s;
   }
 
-  .filter:hover, .filter.on { border-color: var(--accent); color: var(--accent); }
+  .filter:hover { border-color: var(--muted); color: var(--text); }
+  .filter.on { border-color: var(--accent); color: var(--accent); }
 
-  .count {
+  .news-count {
     margin-left: auto;
-    font-size: 0.72rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.9rem;
     color: var(--muted);
-    white-space: nowrap;
+    font-style: italic;
   }
 
-  /* STATUS */
   .status {
-    padding: 0 44px;
-    max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s, padding 0.3s;
+    max-height: 0;
+    transition: max-height 0.3s;
   }
 
   .status.on {
-    max-height: 50px;
-    padding: 12px 44px;
+    max-height: 48px;
     border-bottom: 1px solid var(--border);
   }
 
   .status-inner {
+    padding: 14px 48px;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-size: 0.78rem;
+    gap: 12px;
+    font-size: 0.72rem;
     color: var(--muted);
+    letter-spacing: 0.06em;
   }
 
   .spin {
-    width: 13px; height: 13px;
-    border: 2px solid var(--border);
+    width: 12px; height: 12px;
+    border: 1px solid var(--border2);
     border-top-color: var(--accent);
     border-radius: 50%;
-    animation: spin 0.7s linear infinite;
+    animation: spin 0.8s linear infinite;
     flex-shrink: 0;
   }
 
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* MAIN */
-  main { padding: 36px 44px; }
+  main { padding: 48px; }
 
-  /* EMPTY */
   .empty {
+    padding: 100px 0;
     text-align: center;
-    padding: 90px 24px;
-    color: var(--muted);
   }
 
-  .empty-icon {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    opacity: 0.35;
-    display: block;
+  .empty-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 7rem;
+    font-weight: 300;
+    color: var(--border2);
+    line-height: 1;
+    margin-bottom: 24px;
   }
 
   .empty h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem;
-    font-weight: 400;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
     color: var(--text);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
 
-  .empty p { font-size: 0.83rem; line-height: 1.8; max-width: 340px; margin: 0 auto; }
-
-  /* WEEKLY SUMMARY BOX */
-  .week-box {
-    border-left: 2px solid var(--accent);
-    padding: 18px 22px;
-    background: var(--surface);
-    margin-bottom: 28px;
-    font-size: 0.83rem;
-    color: #aaa;
-    line-height: 1.8;
+  .empty p {
+    font-size: 0.78rem;
+    color: var(--muted);
+    line-height: 2;
+    max-width: 360px;
+    margin: 0 auto;
   }
 
-  .week-box strong {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.92rem;
-    color: var(--accent);
-    display: block;
-    margin-bottom: 6px;
+  .summary-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    margin-bottom: 48px;
   }
 
-  .cats-row {
-    display: flex;
-    gap: 20px;
-    margin-top: 10px;
-    flex-wrap: wrap;
+  .summary-cell {
+    background: var(--bg);
+    padding: 24px;
+    text-align: center;
   }
 
-  .cat-stat { font-size: 0.72rem; color: var(--muted); }
-  .cat-stat b { font-weight: 600; }
+  .summary-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
 
-  /* SECTION */
-  .section-head {
-    font-size: 0.68rem;
+  .summary-label {
+    font-size: 0.6rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--muted);
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 2px;
   }
 
-  /* CARDS */
-  .grid { display: grid; gap: 2px; }
+  .section-rule {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .section-rule span {
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  .section-rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .grid { display: grid; gap: 1px; background: var(--border); }
 
   .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    padding: 22px 26px;
-    transition: border-color 0.2s;
-    animation: up 0.35s ease both;
+    background: var(--bg);
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    animation: fadeup 0.4s ease both;
+    transition: background 0.2s;
   }
 
-  .card:hover { border-color: #333; }
+  .card:hover { background: var(--card); }
 
-  @keyframes up {
+  @keyframes fadeup {
     from { opacity: 0; transform: translateY(10px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .card-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 14px;
-    margin-bottom: 11px;
+  .card-cat {
+    font-size: 0.6rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
   }
+
+  .cat-ai     { color: var(--green); }
+  .cat-footwear { color: var(--rose); }
+  .cat-luxury { color: var(--purple); }
+  .cat-tech   { color: var(--blue); }
 
   .card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.02rem;
-    font-weight: 700;
-    line-height: 1.35;
-    flex: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: var(--text);
+    margin-bottom: 12px;
   }
 
-  .badge {
-    font-size: 0.62rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 3px 9px;
-    font-weight: 600;
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .badge.ai      { background: #0f1f0f; color: var(--green); }
-  .badge.footwear{ background: #1f0f0f; color: var(--red); }
-  .badge.luxury  { background: #1a0f1f; color: var(--purple); }
-  .badge.tech    { background: #0f0f1f; color: var(--blue); }
-
-  .card-body {
-    font-size: 0.82rem;
-    color: #999;
-    line-height: 1.72;
+  .card-summary {
+    font-size: 0.78rem;
+    color: #888;
+    line-height: 1.85;
     margin-bottom: 12px;
   }
 
   .card-impact {
-    font-size: 0.76rem;
-    color: #666;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.92rem;
     font-style: italic;
-    margin-bottom: 14px;
+    color: var(--muted);
     line-height: 1.6;
   }
 
-  .card-impact::before { content: "💡 "; font-style: normal; }
+  .card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    min-width: 110px;
+    flex-shrink: 0;
+  }
 
-  .card-foot {
+  .card-source {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted2);
+    text-align: right;
+    line-height: 1.6;
+  }
+
+  .card-link {
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+
+  .card-link:hover { border-color: var(--accent); }
+
+  .error-box {
+    border: 1px solid #2a1010;
+    background: #0f0808;
+    padding: 24px 32px;
+    font-size: 0.78rem;
+    color: #a06060;
+    line-height: 1.8;
+  }
+
+  footer {
+    margin-top: 80px;
+    padding: 28px 48px;
+    border-top: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .source { font-size: 0.68rem; color: #555; letter-spacing: 0.04em; }
+  footer span {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted2);
+  }
 
-  .read-link {
-    font-size: 0.73rem;
-    color: var(--accent);
+  footer a {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--muted2);
     text-decoration: none;
-    border-bottom: 1px solid transparent;
-    transition: border-color 0.15s;
-    padding-bottom: 1px;
+    transition: color 0.2s;
   }
 
-  .read-link:hover { border-color: var(--accent); }
+  footer a:hover { color: var(--accent); }
 
-  /* ERROR */
-  .error {
-    background: #150a0a;
-    border: 1px solid #2a1010;
-    padding: 18px 22px;
-    font-size: 0.82rem;
-    color: #c07070;
-    line-height: 1.7;
-  }
-
-  @media (max-width: 600px) {
-    header, .toolbar, main { padding-left: 20px; padding-right: 20px; }
-    .logo { font-size: 1.6rem; }
-    header { flex-direction: column; align-items: flex-start; gap: 12px; }
-    .header-meta { text-align: left; }
+  @media (max-width: 640px) {
+    .topbar, .hero, .toolbar, main, .status-inner, footer { padding-left: 20px; padding-right: 20px; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-meta { text-align: left; }
+    .hero-title { font-size: 3rem; }
+    .summary-bar { grid-template-columns: 1fr 1fr; }
+    .card { grid-template-columns: 1fr; }
+    .card-right { flex-direction: row; align-items: center; min-width: auto; }
+    .topbar-links { display: none; }
   }
 </style>
 </head>
 <body>
 
-<header>
+<div class="topbar">
+  <span class="topbar-name">Victoria Chazal</span>
+  <div class="topbar-links">
+    <a href="https://victoriachazal.es" target="_blank">Web</a>
+    <a href="https://victoriachazal.es/podcast/" target="_blank">Podcast</a>
+    <a href="https://open.spotify.com/show/110qJyvx6UYztuJOEmbwOV" target="_blank">Spotify</a>
+  </div>
+</div>
+
+<div class="hero">
   <div>
-    <div class="logo">The <span>Brief</span></div>
-    <div class="tagline">IA · Digital Commerce · Calzado · Lujo · Tech</div>
+    <div class="hero-eyebrow">Weekly Intelligence Report</div>
+    <div class="hero-title">The<br><em>Brief.</em></div>
+    <div class="hero-sub">
+      <span>IA · Commerce</span>
+      <span>Calzado</span>
+      <span>Lujo Digital</span>
+      <span>Tech</span>
+    </div>
   </div>
-  <div class="header-meta" id="metaDate">
+  <div class="hero-meta" id="metaDate">
     <strong>Sin actualizar</strong>
-    Presioná "Actualizar" para cargar<br>las noticias de la semana
+    Presioná "Actualizar" para<br>cargar las noticias de la semana
   </div>
-</header>
+</div>
 
 <div class="toolbar">
-  <button class="btn-primary" id="runBtn" onclick="fetchNews()">↻ Actualizar noticias</button>
-  <div class="divider"></div>
+  <button class="btn-run" id="runBtn" onclick="fetchNews()">↻ Actualizar</button>
+  <div class="sep"></div>
   <div class="filters">
     <button class="filter on" onclick="filterBy('all',this)">Todas</button>
     <button class="filter" onclick="filterBy('ai',this)">IA & Commerce</button>
-    <button class="filter" onclick="filterBy('footwear',this)">Calzado & Acc.</button>
+    <button class="filter" onclick="filterBy('footwear',this)">Calzado</button>
     <button class="filter" onclick="filterBy('luxury',this)">Lujo Digital</button>
     <button class="filter" onclick="filterBy('tech',this)">Tech</button>
   </div>
-  <div class="count" id="count"></div>
+  <div class="news-count" id="newsCount"></div>
 </div>
 
 <div class="status" id="status">
@@ -363,21 +476,26 @@
 
 <main id="main">
   <div class="empty">
-    <span class="empty-icon">📡</span>
-    <h3>Tu agente de noticias está listo</h3>
-    <p>Cada vez que presionés "Actualizar", busca en tiempo real las noticias más relevantes de los últimos 7 días.</p>
+    <div class="empty-num">07</div>
+    <h3>Tu resumen semanal</h3>
+    <p>Presioná "Actualizar" para traer las noticias más relevantes de los últimos 7 días.</p>
   </div>
 </main>
+
+<footer>
+  <span>© Victoria Chazal · The Brief</span>
+  <a href="https://victoriachazal.es" target="_blank">victoriachazal.es →</a>
+</footer>
 
 <script>
 let allNews = [];
 let activeFilter = 'all';
 
 const SYSTEM = `You are a news research agent. Search the web for the most relevant news from the last 7 days in these categories:
-1. AI applied to ecommerce and digital commerce
-2. Footwear and accessories industry (Nike, Adidas, luxury footwear, sneakers, retail trends)
-3. Luxury digital marketing (LVMH, Kering, Richemont, luxury DTC, brand strategy)
-4. AI and technology breakthroughs
+1. AI applied to ecommerce and digital commerce (personalization, search, agents, automation, platforms)
+2. Footwear and accessories industry (Nike, Adidas, luxury footwear, sneakers, DTC, retail trends)
+3. Luxury digital marketing (LVMH, Kering, Richemont, luxury DTC, brand strategy, digital experiences)
+4. AI and technology breakthroughs (new models, agents, platforms, game-changing releases)
 
 After searching, respond with ONLY a raw JSON array. No markdown, no code fences, no explanation before or after. Start your response with [ and end with ].
 
@@ -399,13 +517,13 @@ async function fetchNews() {
   const steps = [
     'Buscando noticias de IA en commerce...',
     'Rastreando calzado y accesorios...',
-    'Analizando marketing de lujo digital...',
-    'Revisando breakthroughs en tecnología...',
-    'Armando tu resumen semanal...'
+    'Analizando marketing de lujo...',
+    'Revisando breakthroughs en tech...',
+    'Armando tu resumen...'
   ];
   let i = 0;
   msg.textContent = steps[0];
-  const interval = setInterval(() => { i = (i+1) % steps.length; msg.textContent = steps[i]; }, 2800);
+  const interval = setInterval(() => { i=(i+1)%steps.length; msg.textContent=steps[i]; }, 2800);
 
   try {
     const today = new Date().toLocaleDateString('es-AR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
@@ -420,7 +538,7 @@ async function fetchNews() {
         system: SYSTEM,
         messages: [{
           role: 'user',
-          content: `Hoy es ${today}. Buscá las noticias más importantes de los últimos 7 días en: IA aplicada a ecommerce, calzado y accesorios de lujo y masivo, marketing digital de marcas de lujo, y avances en IA y tecnología. Devolvé el array JSON.`
+          content: `Today is ${today}. Search and return news from the last 7 days. Return only the JSON array.`
         }]
       })
     });
@@ -434,11 +552,9 @@ async function fetchNews() {
 
     const data = await res.json();
 
-    // Collect all text from all content blocks (including tool results)
     let raw = '';
     for (const block of data.content) {
       if (block.type === 'text') raw += block.text;
-      // also check inside tool_result blocks
       if (block.type === 'tool_result' && Array.isArray(block.content)) {
         for (const inner of block.content) {
           if (inner.type === 'text') raw += inner.text;
@@ -446,27 +562,23 @@ async function fetchNews() {
       }
     }
 
-    // Strip markdown code fences if present
-    raw = raw.replace(/```json/gi, '').replace(/```/g, '');
-
-    // Find outermost JSON array
+    raw = raw.replace(/```json/gi,'').replace(/```/g,'');
     const start = raw.indexOf('[');
     const end = raw.lastIndexOf(']');
-    if (start === -1 || end === -1) throw new Error('La respuesta no contiene un array JSON válido.');
+    if (start===-1||end===-1) throw new Error('No se pudo parsear la respuesta.');
 
-    allNews = JSON.parse(raw.slice(start, end + 1));
+    allNews = JSON.parse(raw.slice(start, end+1));
     renderAll();
 
     const now = new Date();
     document.getElementById('metaDate').innerHTML = `
-      <strong>Actualizado</strong>
-      ${now.toLocaleDateString('es-AR',{weekday:'long',day:'numeric',month:'long'})}<br>
-      ${now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}
+      <strong>${now.toLocaleDateString('es-AR',{weekday:'long',day:'numeric',month:'long'})}</strong>
+      Actualizado · ${now.toLocaleTimeString('es-AR',{hour:'2-digit',minute:'2-digit'})}
     `;
 
   } catch(e) {
     clearInterval(interval);
-    document.getElementById('main').innerHTML = `<div class="error">No se pudieron cargar las noticias: ${e.message}<br><br>Intentá de nuevo en unos segundos.</div>`;
+    main.innerHTML = `<div class="error-box">No se pudieron cargar las noticias: ${e.message}<br><br>Intentá de nuevo en unos segundos.</div>`;
   } finally {
     status.classList.remove('on');
     btn.disabled = false;
@@ -477,7 +589,7 @@ function filterBy(cat, btn) {
   activeFilter = cat;
   document.querySelectorAll('.filter').forEach(b => b.classList.remove('on'));
   btn.classList.add('on');
-  const filtered = cat === 'all' ? allNews : allNews.filter(n => n.category === cat);
+  const filtered = cat==='all' ? allNews : allNews.filter(n=>n.category===cat);
   renderCards(filtered);
 }
 
@@ -485,30 +597,37 @@ function renderAll() {
   const main = document.getElementById('main');
   main.innerHTML = '';
 
-  // Summary box
   const ai = allNews.filter(n=>n.category==='ai').length;
   const fw = allNews.filter(n=>n.category==='footwear').length;
   const lx = allNews.filter(n=>n.category==='luxury').length;
   const tc = allNews.filter(n=>n.category==='tech').length;
 
-  const box = document.createElement('div');
-  box.className = 'week-box';
-  box.innerHTML = `
-    <strong>Resumen de la semana</strong>
-    ${allNews.length} noticias seleccionadas. Lo más relevante en IA, calzado, lujo y tecnología.
-    <div class="cats-row">
-      <span class="cat-stat"><b style="color:#7ecf7e">${ai}</b> IA & Commerce</span>
-      <span class="cat-stat"><b style="color:#d07e7e">${fw}</b> Calzado & Acc.</span>
-      <span class="cat-stat"><b style="color:#c07ed0">${lx}</b> Lujo Digital</span>
-      <span class="cat-stat"><b style="color:#7e9ed0">${tc}</b> Tech</span>
+  const bar = document.createElement('div');
+  bar.className = 'summary-bar';
+  bar.innerHTML = `
+    <div class="summary-cell">
+      <div class="summary-num" style="color:var(--green)">${ai}</div>
+      <div class="summary-label">IA & Commerce</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-num" style="color:var(--rose)">${fw}</div>
+      <div class="summary-label">Calzado</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-num" style="color:var(--purple)">${lx}</div>
+      <div class="summary-label">Lujo Digital</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-num" style="color:var(--blue)">${tc}</div>
+      <div class="summary-label">Tech</div>
     </div>
   `;
-  main.appendChild(box);
+  main.appendChild(bar);
 
-  const head = document.createElement('div');
-  head.className = 'section-head';
-  head.textContent = 'Noticias de la semana';
-  main.appendChild(head);
+  const rule = document.createElement('div');
+  rule.className = 'section-rule';
+  rule.innerHTML = `<span>Noticias de la semana</span>`;
+  main.appendChild(rule);
 
   const grid = document.createElement('div');
   grid.className = 'grid';
@@ -522,7 +641,7 @@ function renderCards(list) {
   const grid = document.getElementById('grid');
   if (!grid) return;
 
-  document.getElementById('count').textContent = `${list.length} noticias`;
+  document.getElementById('newsCount').textContent = list.length ? `${list.length} noticias` : '';
 
   if (!list.length) {
     grid.innerHTML = `<div class="empty" style="padding:40px 0"><p>No hay noticias en esta categoría.</p></div>`;
@@ -532,16 +651,16 @@ function renderCards(list) {
   const labels = { ai:'IA & Commerce', footwear:'Calzado', luxury:'Lujo Digital', tech:'Tech' };
 
   grid.innerHTML = list.map((n,i) => `
-    <div class="card" style="animation-delay:${i*0.045}s">
-      <div class="card-head">
+    <div class="card" style="animation-delay:${i*0.04}s">
+      <div>
+        <div class="card-cat cat-${n.category}">${labels[n.category]||n.category}</div>
         <div class="card-title">${x(n.title)}</div>
-        <span class="badge ${n.category}">${labels[n.category]||n.category}</span>
+        <div class="card-summary">${x(n.summary)}</div>
+        ${n.impact ? `<div class="card-impact">"${x(n.impact)}"</div>` : ''}
       </div>
-      <div class="card-body">${x(n.summary)}</div>
-      ${n.impact ? `<div class="card-impact">${x(n.impact)}</div>` : ''}
-      <div class="card-foot">
-        <span class="source">${x(n.source||'')}</span>
-        ${n.url ? `<a href="${x(n.url)}" target="_blank" rel="noopener" class="read-link">Leer nota →</a>` : ''}
+      <div class="card-right">
+        <div class="card-source">${x(n.source||'')}</div>
+        ${n.url ? `<a href="${x(n.url)}" target="_blank" rel="noopener" class="card-link">Leer →</a>` : ''}
       </div>
     </div>
   `).join('');
